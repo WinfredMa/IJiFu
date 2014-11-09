@@ -38,30 +38,49 @@
         	</div><!-- header -->
         
         	<div id="mainmenu" class="pull-left nav-menu">
-        		<ul id="yw0">
-					<li class="active"><a class="home-menu" href="/bennet/index.php?r=site/index">首页</a></li>
-					<li><a class="video-menu" href="/bennet/index.php?r=site/page&amp;view=about">视频</a></li>
-					<li><a class="activity-menu" href="/bennet/index.php?r=site/contact">活动展示</a></li>
-					<li><a class="poster-menu" href="/bennet/index.php?r=site/contact">帖子展示</a></li>
-					<li><a class="team-menu" href="/bennet/index.php?r=site/contact">团队介绍</a></li>
-					<li><a class="sugestion-menu" href="/bennet/index.php?r=site/login">意见反馈</a></li>
-				</ul>
+        		<nav id="site-navigation" class="navigation main-navigation" role="navigation">
+					<button class="menu-toggle"><?php _e( 'Menu', 'twentythirteen' ); ?></button>
+					<a class="screen-reader-text skip-link" href="#content" title="<?php esc_attr_e( 'Skip to content', 'twentythirteen' ); ?>"><?php _e( 'Skip to content', 'twentythirteen' ); ?></a>
+					<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
+				</nav><!-- #site-navigation -->
+        		
 			</div><!-- mainmenu -->
     	</div>
 	    <div class="home-upside-container overflow-hidden">
-	        <div class="latest-video-container pull-left"></div>
+	        <div class="latest-video-container pull-left">
+                <?php
+                    $homeVideoId = get_cat_ID('home video');
+                    
+                    $post_list = ijifu_get_post_list($homeVideoId);
+                    if ( $post_list->have_posts() ) :
+                    	while ( $post_list->have_posts() ) : $post_list->the_post(); 
+                            the_content();
+                        endwhile;
+                    endif;
+                ?>
+	        </div>
 	        <div class="download-container pull-left overflow-hidden">
-	            <div class="android-qrcode qrcode-item pull-left">
-	                <div>
-	                </div>
-	                <button class="downloat-btn">安卓下载</button>
+	        	<div class="overflow-hidden">
+		            <div class="qrcode-container android-qrcode-container pull-left">
+		                <a href="http://ijifu-site.qiniudn.com/android_latest.apk" class="android-qrcode qrcode-item display-block">
+		                	<img src="<?php echo get_template_directory_uri(); ?>/images/android.png" />
+		                	<button class="downloat-btn">安卓下载</button>
+		                </a>
+		                
+		            </div>
+		            <div class="qrcode-container ios-qrcode-container pull-left">
+		                <a href="https://itunes.apple.com/us/app/i-ji-fu/id858296989?l=zh&ls=1&mt=8" class="ios-qrcode qrcode-item display-block">
+		                	<img src="<?php echo get_template_directory_uri(); ?>/images/ios.png" />
+		                	<button class="downloat-btn">苹果下载</button>
+		                </a>
+		            </div>
 	            </div>
-	            <div class="ios-qrcode qrcode-item pull-left">
-	                <div>
-	                </div>
-	                <button class="downloat-btn">苹果下载</button>
+	            <div class="download-description overflow-hidden">
+                    <div class="hot-activity-img"></div>
+                    <div class="hot-activity-excerpt">
+                       <?php echo do_shortcode("[metaslider id=76]"); ?>
+                    </div>
 	            </div>
-	            <div class="download-description"></div>
 	        </div>
 	    </div>
 		<div id="main" class="site-main">

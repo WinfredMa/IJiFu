@@ -3180,62 +3180,6 @@ footer.entry-meta {
   
 }
 
-/************************** Global **********************/
-.overflow-hidden {
-  overflow: hidden;
-}
-
-.pull-right {
-  float: right;
-}
-
-/************************** Home ***********************/
-
-/************************* Latest Workers *********************/
-.latest-works {
-}
-
-.latest-works__header {
-  background: #d9eeff;
-  box-shadow: 1px 1px 10px;
-}
-
-.latest-works .label-item {
-  line-height: 70px;
-}
-
-.latest-works--chinese {
-  color: #3ba7ff;
-  font-size: 2em;
-  font-weight: bold;
-  height: 70px;
-  margin-left: 30px;
-}
-
-.latest-works--english {
-  color: #afa778
-}
-
-.more-btn {
-  background: #e2d9d4;
-  border-radius: 10px;
-  box-shadow: 1px 1px 5px;
-  height: 30px;
-  line-height: 30px;
-  margin-top: 20px;
-  margin-right: 15px;
-  text-align: center;
-  width: 160px;
-}
-
-.latest-works-image {
-  border: 2px solid #79afbb;
-  height: 500px;
-  margin-top: 30px;
-  width: 990px;
-  
-}
-
 /********************************* Global **********************************/
 .container {
   width: 1200px;
@@ -3246,10 +3190,22 @@ footer.entry-meta {
   float: left;
 }
 
+.pull-right {
+  float: right;
+}
+
 .overflow-hidden {
   overflow: hidden;
 }
 
+a,
+a:hover {
+  text-decoration: none;
+}
+
+.display-block {
+  display: block;
+}
 /******************************** Header *********************************/
 .websit-logo {
   background: url(images/logo.png) no-repeat -18px 21px;
@@ -3294,35 +3250,55 @@ footer.entry-meta {
   color: yellow;
 }
 
-.home-menu {
+#mainmenu ul li.current-menu-item > a {
+  color: yellow;
+  font-style: normal;
+}
+
+#mainmenu .menu-item-object-page {
+    background: url(images/nav-line.png) no-repeat right;
+}
+
+.menu-item-9  {
   width: 107px;
 }
 
-.video-menu {
+.menu-item-92  {
   width: 115px;
 }
 
-.activity-menu {
+.menu-item-93 {
   width: 150px;
 }
 
-.poster-menu,
-.team-menu,
-.sugestion-menu {
+.menu-item-94,
+.menu-item-95,
+.menu-item-96 {
   width: 150px;
 }
 
 .latest-video-container {
-
   height: 410px;
   width: 680px;
-  background: #000;
+}
+
+.latest-video-container .wp-video {
+  height: 410px !important;
+  width: 680px !important;
+}
+
+.latest-video-container .mejs-container {
+  height: 410px !important;
+}
+
+.qrcode-container {
+	height: 180px;
+    width: 50%;
 }
 
 .qrcode-item {
-  background: #ccc;
-  height: 180px;
-  width: 50%;
+  margin: 0 auto;
+  width: 130px;
 }
 
 .download-container {
@@ -3331,15 +3307,28 @@ footer.entry-meta {
   width: 480px;
 }
 
+.qrcode-item > img {
+  width: 100%;
+}
+
 .downloat-btn {
   display: block;
-  margin: 0 auto;
+  margin: 5px auto 0;
 }
 
 .download-description {
   background: url(images/newuabian.png) repeat-x;
   clear: both;
   height: 215px;
+  margin-top: 15px;
+  padding: 8px 15px;
+}
+
+.hot-activity-img {
+  background: url(images/activity.png) no-repeat;
+  height: 36px;
+  margin: 5px auto 0;
+  width: 128px;
 }
 
 .home-body-image-one {
@@ -3357,7 +3346,7 @@ footer.entry-meta {
 
 .home-body-image-three {
   background: url(images/body3.png) no-repeat -17px 0;
-  height: 590px;
+  height: 585px;
   width: 100%;
 }
 
@@ -3366,4 +3355,201 @@ footer.entry-meta {
   margin: 0;
   padding: 0;
   width: 100%;
+}
+
+/****************************** Footer *******************************/
+.site-footer {
+  background: #fff;
+  margin-top: 40px;
+  overflow: hidden;
+}
+/****************************** Vedio Home ****************************/
+.hot-video-icon {
+  background: url(images/fire-tv.png) no-repeat;
+  border-bottom: 1px solid #ddd;
+  height: 53px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.video-container {
+  box-shadow: 1px 1px 25px #ccc;
+  margin-bottom: 12px;
+  padding: 0 25px;
+}
+
+.video-item {
+  border-bottom: 1px solid #ddd;
+  padding: 15px 0 25px;
+
+}
+
+.video-detail-link {
+  color: #3175a6;
+  display: block;
+  padding-bottom: 5px;
+  text-decoration: none;
+}
+
+.page_navi {
+  padding: 10px 0;
+}
+
+.wp-pagenavi a,
+.wp-pagenavi span {
+  border: 0;
+}
+
+/***************************** Activity Home *****************************/
+.visit-statistics {
+  color: #aaa;
+}
+
+.hot-activity-icon {
+  background: url(images/fire-poster.png) no-repeat;
+  border-bottom: 1px solid #ddd;
+  height: 53px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.poster-container,
+.team-container,
+.questions-container {
+  box-shadow: 1px 1px 25px #ccc;
+  margin-bottom: 12px;
+  padding: 0 25px;
+}
+
+.poster-item {
+  border-bottom: 1px solid #ddd;
+  padding: 15px 0 10px;
+}
+
+/******************************* Team Introduction **********************/
+.team-introduction-icon {
+  background: url(images/team.png) no-repeat;
+  border-bottom: 1px solid #ddd;
+  height: 53px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.team-leader {
+  border-bottom: 1px solid #ddd;
+  padding: 15px 0 10px;
+}
+
+.leader-name {
+  color: #f685b1;
+  font-weight: bold;
+}
+
+.leader-title {
+  font-weight: bold;
+}
+
+/************************ Questions *******************************/
+.questions-icon {
+  background: url(images/questions.png) no-repeat;
+  border-bottom: 1px solid #ddd;
+  height: 53px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.question-item {
+  border-bottom: 1px dashed #000;
+  padding: 15px 0 10px;
+}
+
+.question-title {
+  color: #156bb4;
+  font-weight: bold;
+}
+
+.visitor-suggestion-icon {
+  background: url(images/suggestion.png) no-repeat;
+  border-bottom: 1px solid #ddd;
+  height: 53px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.suggestion-form {
+  margin-top: 5px;
+}
+
+.suggestion-context {
+  border: 1px solid #d4d0ba;
+  box-shadow: 1px 1px 15px #ccc;
+  resize: none;
+  width: 100%;
+}
+
+.visitor-suggestion .suggestion-submit-btn {
+  background: #4597ed;
+  border: none;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+/*************************** Footer **************************/
+.site-footer {
+  margin-top: 0;
+}
+
+.rights-warning {
+  height: 40px;
+  line-height: 40px;
+}
+
+.single-page-container {
+  box-shadow: 1px 1px 25px #ccc;
+  margin-bottom: 12px;
+  margin-top: 40px;
+  padding: 30px;
+}
+
+.single-page-container .entry-title {
+  color: #8f8e8c;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+}
+
+.single-page-container .post-meta {
+  border-bottom: 1px dashed #000;
+  color: #8f8e8c;
+  padding: 10px 0;
+}
+
+.single-page-container .entry-content {
+  max-width: none;
+  margin-top: 15px;
+}
+
+.single-page-container .nav-single {
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.single-page-container  .nav-previous a {
+  color: #8f8e8c;
+  display: inline-block;
+  float: left;
+  max-width: 260px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.single-page-container .nav-next a {
+  color: #8f8e8c;
+  display: inline-block;
+  float: right;
+  max-width: 260px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

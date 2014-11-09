@@ -537,3 +537,108 @@ function wpdx_disable_open_sans( $translations, $text, $context, $domain ) {
   }
   return $translations;
 }
+
+function ijifu_extract_category_from_URI() {
+    $category = '';
+    $URI = $_SERVER['REQUEST_URI'];
+    $elements = explode('/', $URI);
+    if ( count($elements) > 1 ) {
+        $category = $elements[2];
+    }
+    
+    return $category;
+}
+
+function ijifu_get_post_list( $catId ) {
+    $order_by = 'post_date';
+    $order = 'DESC';
+    $cat = $catId;
+
+    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
+    return new WP_Query(
+        "posts_per_page=" . get_option('posts_per_page') .
+        "&orderby=" . $order_by .
+        "&order=" . $order .
+        "&cat=" . $cat .
+        "&paged=" . $paged
+    );
+}
+
+/*
+ * View poster count
+ */
+function ijifu_get_post_views( $postID ) {
+    $count_key = 'post_views_count';
+    $count = get_post_meta($postID, $count_key, true);
+
+    if ($count == '') {
+        $count = 0;
+    }
+
+    return $count . ' 访问';
+}
+ 
+function ijifu_set_post_views( $postID ) {
+    $count_key = 'post_views_count';
+    $count = get_post_meta($postID, $count_key, true);
+
+    if ($count == '') {
+        add_post_meta($postID, $count_key, '1');
+    } else {
+        $count++;
+        update_post_meta($postID, $count_key, $count);
+    }
+}
+
+function ijifu_get_latest_viewed_time( $postID ) {
+	$latest_viewed_time_key = 'post_latest_viewed_time';
+    $lastestViewedTime = get_post_meta($postID, $latest_viewed_time_key, true);
+
+    return $lastestViewedTime;
+}
+
+function ijifu_set_latest_viewed_time( $postID ) {
+    $latest_viewed_time_key = 'post_latest_viewed_time';
+    $lastestViewedTime = get_post_meta($postID, $latest_viewed_time_key, true);
+    $time = time();
+
+    if ($lastestViewedTime == '') {
+        add_post_meta($postID, $latest_viewed_time_key, $time);
+    } else {
+        update_post_meta($postID, $latest_viewed_time_key, $time);
+    }
+}
+
+function ijifu_get_time( $time ) {
+	$timeStr = '';
+
+	if ($time) {
+        $format = 'Y-m-d H:i:s';
+
+	    $date = new DateTime();
+	    $date->setTimestamp($time);
+	
+	    $timeStr = $date->format($format);
+    }
+
+    return $timeStr;
+}
+
+function ijifu_get_author($postId) {
+  $author = get_post_meta($postId, 'author', true);
+  $author = empty($author) ? 'Admin' : $author;
+  
+  return $author;
+}
+
+function ijifu_insert_suggestion( $suggestion ) {
+	$categoryId = get_cat_ID('suggestion');
+    $visitorSuggestion = array('post_title' => 'Suggestion',
+                'post_content' => wp_strip_all_tags($suggestion),
+                'post_status' => 'publish',
+                'post_author' => '',
+                'post_category' => array($categoryId)
+            );
+  wp_insert_post($visitorSuggestion);
+}
