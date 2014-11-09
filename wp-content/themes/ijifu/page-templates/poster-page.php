@@ -13,7 +13,7 @@
  */
 
 get_header(); 
-$category = ijifu_extract_category_from_URI();
+$category = 'poster';
 $catId = get_cat_ID($category);
 $post_list = ijifu_get_post_list($catId);
 ?>
